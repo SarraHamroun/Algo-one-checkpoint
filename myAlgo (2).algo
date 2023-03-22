@@ -1,0 +1,89 @@
+/*ALGORITHM check_algo
+VAR
+    str: STRING;
+    count, i: INTEGER := 0;
+
+
+
+BEGIN
+REPEAT
+    READ(str)
+UNTIL (str.length() != 0)
+
+FOR i FROM 0 TO str.length()-1  DO
+    IF (str[i] != ' ') THEN
+        count:= count + 1
+        // count+=1
+        // count++
+    END_IF
+END_FOR
+
+Write('The number of caracters is: ' count)
+    
+END*/
+
+
+
+
+ALGORITHM nb-word-vowels
+VAR
+        str: STRING;
+        count, countv: INTEGER:= 0;
+        vowels: ARRAY_OF char['a','e','i','u','o','A','E','U','I','O'];
+BEGIN
+    REPEAT
+        READ(str)
+    UNTIL (str.length() != 0)
+
+FOR i FROM 0 TO str.length()-1  DO
+    IF (str[i] = ' ') THEN
+        count++;
+    ELSE IF (str[i] in vowels)
+        countv++;
+    END_IF
+END_FOR
+Write('The number of words is: ', count+1)
+Write('The number of vowels is: ', countv)
+END
+
+
+
+
+
+
+ALGORITHM sum-elements
+VAR
+    a:ARRAY_OF INTEGER[100];
+    a1:ARRAY_OF INTEGER[100];
+    m,n:INTEGER;
+    i,j,s1:INTEGER:=0;
+    
+BEGIN
+    read(n);
+    read(m);
+    FOR i FROM 0 TO n-1 STEP step  DO
+        read(a[i])
+    END_FOR
+    FOR i FROM 0 TO m-1 STEP step  DO
+        read(a1[i])
+    END_FOR
+    FOR i FROM 0 TO n-1 DO
+        j:=0;
+        test:=false
+        while(j<m and test=false) DO
+            IF (a[i]=a1[j]) THEN
+                a[i]:=0
+                a1[j]:=0
+                test:=True
+            j++;
+            END_IF
+        END_WHILE
+    END_FOR
+    FOR i FROM 0 TO n-1 STEP step  DO
+        s1+=a[i]
+    END_FOR
+    FOR i FROM 0 TO m-1 STEP step  DO
+        s1+=a1[i]
+    END_FOR
+    Write(s1);
+END
